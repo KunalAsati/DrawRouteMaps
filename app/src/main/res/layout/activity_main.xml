@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.ahmadrosid.drawroutemaps.MainActivity">
+
+    <EditText
+        android:id="@+id/editText3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        tools:layout_editor_absoluteX="31dp"
+        tools:layout_editor_absoluteY="29dp"
+        android:layout_alignBottom="@+id/button2"
+        android:layout_toStartOf="@+id/button2"
+        android:layout_marginEnd="9dp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="or"
+        tools:layout_editor_absoluteX="133dp"
+        tools:layout_editor_absoluteY="98dp"
+        android:layout_marginTop="37dp"
+        android:layout_below="@+id/editText3"
+        android:layout_alignStart="@+id/button3"
+        android:layout_marginStart="50dp" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onDone"
+        android:text="Done"
+        tools:layout_editor_absoluteX="268dp"
+        tools:layout_editor_absoluteY="29dp"
+        android:layout_marginTop="52dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="49dp" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/button2"
+        android:layout_marginStart="107dp"
+        android:layout_marginTop="86dp"
+        android:onClick="onMy"
+        android:text="MyLocation"
+        tools:layout_editor_absoluteX="82dp"
+        tools:layout_editor_absoluteY="135dp" />
+</RelativeLayout>

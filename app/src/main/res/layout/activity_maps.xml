@@ -1,0 +1,73 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context="com.ahmadrosid.drawroutemaps.MapsActivity">
+
+    <fragment
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.ahmadrosid.drawroutemaps.MapsActivity"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Destination"
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/textView"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="15dp" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="satelliteClick"
+        android:text="Change View"
+        android:layout_marginStart="6dp"
+        android:layout_alignBottom="@+id/editText2"
+        android:layout_alignStart="@+id/imageButton3" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/imageButton3"
+        android:layout_marginEnd="18dp"
+        android:onClick="myLoc"
+        app:srcCompat="@android:drawable/ic_menu_mylocation" />
+
+    <ImageButton
+        android:id="@+id/imageButton3"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignBottom="@+id/textView"
+        android:layout_marginEnd="14dp"
+        android:layout_toStartOf="@+id/imageButton"
+        android:onClick="onMapSearch"
+        app:srcCompat="@android:drawable/ic_menu_directions" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/editText2"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="36dp"
+        android:onClick="goToSearch"
+        android:text="@string/srcstring"
+        android:textSize="18sp" />
+
+
+</RelativeLayout>

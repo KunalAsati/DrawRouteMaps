@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">RouteFinder</string>
+    <string name="title_activity_maps">RouteFinder</string>
+    <string name="srcstring">Source</string>
+</resources>
