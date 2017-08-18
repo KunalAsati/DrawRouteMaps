@@ -32,9 +32,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private GoogleMap mMap;
     private int n = 1;
-    private LatLng SlatLng;
+    private LatLng SlatLng = null;
     private String collegeMessage;
-    private TextView collegeDetails;
+    private TextView collegeDetails = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,7 +87,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 e.printStackTrace();
             }
 
-            if(collegeDetails.getText().toString() == "MyLocation"){
+            if(collegeDetails.getText().toString().equals("MyLocation")){
                 if (ActivityCompat.checkSelfPermission(MapsActivity.this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(MapsActivity.this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                     ActivityCompat.requestPermissions(MapsActivity.this,new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, 1);
                 }else{
@@ -113,11 +113,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 }
         }
 
-        else {
+       else {
             Address address1 = addressList.get(0);
              SlatLng = new LatLng(address1.getLatitude(), address1.getLongitude());
 
-        }
+       }
 
 
             Address address2 = addressList2.get(0);
