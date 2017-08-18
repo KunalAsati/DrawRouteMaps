@@ -33,8 +33,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private GoogleMap mMap;
     private int n = 1;
     private LatLng SlatLng = null;
-    private String collegeMessage;
-    private TextView collegeDetails = null;
+
+    private EditText collegeDetails = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,8 +47,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         if(collegedata == null){
             return;
         }
+         String collegeMessage;
         collegeMessage =collegedata.getString("src");
-        collegeDetails = (TextView) findViewById(R.id.textView);
+        collegeDetails = (EditText) findViewById(R.id.editText);
         collegeDetails.setText(collegeMessage);
     }
 
@@ -103,7 +104,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         String provider = lm.getBestProvider(criteria, true);
                         myLocation = lm.getLastKnownLocation(provider);
                     }
-
+                    TextView textView3 = (TextView) findViewById(R.id.textView3);
+                    String s = "My Location set";
+                    textView3.setText(s);
                     if(myLocation!=null){
                         SlatLng = new LatLng(myLocation.getLatitude(), myLocation.getLongitude());
                         //  mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(userLocation, 14), 1500, null);
@@ -144,19 +147,19 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void satelliteClick(View v) {
         switch (n) {
 
+
             case 1:
-                mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+                mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
                 n = 2;
                 break;
             case 2:
-                mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+                mMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
                 n = 3;
                 break;
             case 3:
-                mMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
+                mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
                 n = 1;
                 break;
-
         }
     }
 
