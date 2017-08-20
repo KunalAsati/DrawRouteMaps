@@ -13,6 +13,7 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -28,11 +29,12 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.io.IOException;
 import java.util.List;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+public class MapsActivity extends AppCompatActivity   implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     private int n = 1;
     private LatLng SlatLng = null;
+    private String collegeMessage;
 
     private EditText collegeDetails = null;
 
@@ -47,7 +49,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         if(collegedata == null){
             return;
         }
-         String collegeMessage;
         collegeMessage =collegedata.getString("src");
         collegeDetails = (EditText) findViewById(R.id.editText);
         collegeDetails.setText(collegeMessage);
@@ -78,7 +79,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         String Dlocation = DestSearch.getText().toString();
         List<Address> addressList2 = null;
 
-        if ((location != null || !location.equals("")) || (Dlocation != null || !Dlocation.equals(""))) {
+        if ((location != null || !location.equals("")) && (Dlocation != null || !Dlocation.equals(""))) {
             Geocoder geocoder = new Geocoder(this);
             try {
                 addressList = geocoder.getFromLocationName(location, 1);
@@ -88,32 +89,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 e.printStackTrace();
             }
 
-            if(collegeDetails.getText().toString().equals("MyLocation")){
-                if (ActivityCompat.checkSelfPermission(MapsActivity.this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(MapsActivity.this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                    ActivityCompat.requestPermissions(MapsActivity.this,new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, 1);
-                }else{
-                    if(!mMap.isMyLocationEnabled())
-                        mMap.setMyLocationEnabled(true);
+            if(collegeMessage.equals("mylocation")){
 
-                    LocationManager lm = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
-                    Location myLocation = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-
-                    if (myLocation == null) {
-                        Criteria criteria = new Criteria();
-                        criteria.setAccuracy(Criteria.ACCURACY_COARSE);
-                        String provider = lm.getBestProvider(criteria, true);
-                        myLocation = lm.getLastKnownLocation(provider);
-                    }
-                    TextView textView3 = (TextView) findViewById(R.id.textView3);
-                    String s = "My Location set";
-                    textView3.setText(s);
-                    if(myLocation!=null){
-                        SlatLng = new LatLng(myLocation.getLatitude(), myLocation.getLongitude());
-                        //  mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(userLocation, 14), 1500, null);
-                  //      mMap.addMarker(new MarkerOptions().position(SlatLng).title("My Location"));
-                    //    mMap.moveCamera(CameraUpdateFactory.newLatLng(SlatLng));
-                    }
-                }
+                myLoc(view);
         }
 
        else {
@@ -187,10 +165,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
 
             if(myLocation!=null){
-                LatLng userLocation = new LatLng(myLocation.getLatitude(), myLocation.getLongitude());
+                SlatLng = new LatLng(myLocation.getLatitude(), myLocation.getLongitude());
               //  mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(userLocation, 14), 1500, null);
-                mMap.addMarker(new MarkerOptions().position(userLocation).title("My Location"));
-                mMap.moveCamera(CameraUpdateFactory.newLatLng(userLocation));
+                mMap.addMarker(new MarkerOptions().position(SlatLng).title("My Location"));
+                mMap.moveCamera(CameraUpdateFactory.newLatLng(SlatLng));
             }
         }
     }

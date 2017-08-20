@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     public void onMy(View view) {
 
         Intent i = new Intent(this, MapsActivity.class);
-        String srcmsg = "MyLocation";
+        String srcmsg = "mylocation";
         i.putExtra("src", srcmsg);
         startActivity(i);
     }

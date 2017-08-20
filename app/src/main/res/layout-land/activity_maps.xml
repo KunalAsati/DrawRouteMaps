@@ -10,11 +10,11 @@
     <fragment
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
-        android:layout_width="match_parent"
-        android:layout_height="320dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        tools:context="com.ahmadrosid.drawroutemaps.MapsActivity" />
+        android:layout_width="420dp"
+        android:layout_height="match_parent"
+        tools:context="com.ahmadrosid.drawroutemaps.MapsActivity"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true" />
 
     <EditText
         android:id="@+id/editText2"
@@ -32,22 +32,22 @@
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/editText2"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="12dp"
         android:onClick="satelliteClick"
-        android:text="Change View" />
+        android:text="Change View"
+        android:layout_marginBottom="16dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignEnd="@+id/textView3" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/button"
-        android:layout_alignStart="@+id/editText2"
-        android:layout_marginBottom="6dp"
-        android:layout_marginStart="92dp"
         android:text="to"
-        android:textColor="@color/common_google_signin_btn_text_dark_focused" />
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:layout_below="@+id/editText"
+        android:layout_alignStart="@+id/editText"
+        android:layout_marginStart="96dp"
+        android:layout_marginTop="8dp" />
 
     <EditText
         android:id="@+id/editText"
@@ -65,12 +65,11 @@
         android:id="@+id/imageView3"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_above="@+id/editText2"
-        android:layout_alignEnd="@+id/button"
-        android:layout_marginBottom="13dp"
-        android:layout_marginEnd="9dp"
         android:onClick="myLoc"
-        app:srcCompat="@drawable/images" />
+        app:srcCompat="@drawable/images"
+        android:layout_alignTop="@+id/imageView2"
+        android:layout_alignEnd="@+id/editText2"
+        android:layout_marginEnd="21dp" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -78,8 +77,10 @@
         android:layout_height="50dp"
         android:onClick="onMapSearch"
         app:srcCompat="@drawable/dir"
-        android:layout_alignTop="@+id/imageView3"
-        android:layout_alignStart="@+id/button" />
+        android:layout_above="@+id/button"
+        android:layout_alignStart="@+id/editText2"
+        android:layout_marginStart="23dp"
+        android:layout_marginBottom="26dp" />
 
     <TextView
         android:id="@+id/textView3"
